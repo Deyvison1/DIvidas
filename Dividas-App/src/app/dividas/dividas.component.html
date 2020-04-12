@@ -1,11 +1,52 @@
-<p>
-  dividas works!
-</p>
-
-<h2>Router Dividas Get</h2>
-<hr>
-<p>
-  Seja bem vindo.a
-  <br>
-  <button >Teste</button>
-</p>
+<h2 class="text-left ">{{title}}</h2>
+<div>
+<div class="form-inline">
+  <div class="form-group mb-2">
+    Filtrar:&nbsp; <input placeholder="Buscar" type="text" class="form-control mr-2 text-center" 
+    [(ngModel)]="filtroLista"
+    />
+  </div>
+</div>
+<h3>Filtro: {{filtroLista}}</h3>
+<table class="table table-striped">
+  <thead class="thead-light">
+    <tr>
+      <th>
+        <button class="btn btn-outline-info" (click)="mudarImagem()">
+          {{mostrarImagem ? 'Ocultar': 'Exibir'}}
+        </button>
+      </th>
+      <th>Titulo</th>
+      <th>Data Compra</th>
+      <th>Vencimento</th>
+      <th>Forma de Pagamento</th>
+      <th>Valor</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="dividas && dividas.length">
+    <tr *ngFor="let divida of dividasFiltradas">
+    <td>
+      <img *ngIf="mostrarImagem" src="http://localhost:5000/img/{{divida.imagemURL}}" 
+      [style.width.px]="imagemLargura"
+      [style.margin.px]="imagemMargem"
+      ></td>
+      <td>{{ divida.titulo | lowercase }}</td>
+      <td>{{ divida.dataCompra | date: "dd/MM/yyyy" }}</td>
+      <td>{{ divida.vencimento | date: "dd/MM/yyyy" }}</td>
+      <td>{{ divida.formaPagamento }}</td>
+      <td>{{ divida.valor | currency : 'R$ ' }}</td>
+      <td>
+        <a class="btn btn-danger">Excluir</a>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot *ngIf="!dividas">
+    <tr>
+      <td colspan="6">
+        <h4>Nenhuma Divida Encontrada</h4>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+</div>

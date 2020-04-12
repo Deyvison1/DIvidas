@@ -5,22 +5,29 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DividasComponent } from './dividas/dividas.component';
 
-import { HttpClientModule } from '@angular/common/http';
+/*  Depois do init project  */
 
+import { HttpClientModule } from '@angular/common/http';
+import { NavComponent } from './nav/nav.component';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
    declarations: [
       AppComponent,
-      DividasComponent
+      DividasComponent,
+      NavComponent
    ],
    imports: [
       BrowserModule,
       AppRoutingModule,
-      HttpClientModule
+      HttpClientModule,
+      FormsModule
    ],
-   providers: [],
+   providers: [
+
+   ],
    bootstrap: [
       AppComponent
    ]

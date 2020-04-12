@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Dividas.WebApi.Migrations
 {
@@ -12,9 +13,10 @@ namespace Dividas.WebApi.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    ImagemURL = table.Column<string>(nullable: true),
                     Titulo = table.Column<string>(nullable: true),
-                    DataCompra = table.Column<string>(nullable: true),
-                    Vencimento = table.Column<string>(nullable: true),
+                    DataCompra = table.Column<DateTime>(nullable: false),
+                    Vencimento = table.Column<DateTime>(nullable: false),
                     FormaPagamento = table.Column<int>(nullable: false),
                     Valor = table.Column<double>(nullable: false)
                 },
