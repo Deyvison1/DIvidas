@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/deyvison/Documentos/Dividas/Dividas.WebApi/Dividas.WebApi.csproj": {}
+    "/home/deyvison/Documents/Dividas/Dividas/Dividas.WebApi/Dividas.WebApi.csproj": {}
   },
   "projects": {
-    "/home/deyvison/Documentos/Dividas/Dividas.WebApi/Dividas.WebApi.csproj": {
+    "/home/deyvison/Documents/Dividas/Dividas/Dividas.WebApi/Dividas.WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/deyvison/Documentos/Dividas/Dividas.WebApi/Dividas.WebApi.csproj",
+        "projectUniqueName": "/home/deyvison/Documents/Dividas/Dividas/Dividas.WebApi/Dividas.WebApi.csproj",
         "projectName": "Dividas.WebApi",
-        "projectPath": "/home/deyvison/Documentos/Dividas/Dividas.WebApi/Dividas.WebApi.csproj",
+        "projectPath": "/home/deyvison/Documents/Dividas/Dividas/Dividas.WebApi/Dividas.WebApi.csproj",
         "packagesPath": "/home/deyvison/.nuget/packages/",
-        "outputPath": "/home/deyvison/Documentos/Dividas/Dividas.WebApi/obj/",
+        "outputPath": "/home/deyvison/Documents/Dividas/Dividas/Dividas.WebApi/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/share/dotnet/sdk/NuGetFallbackFolder"
@@ -49,6 +49,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[2.0.0, )"
             },
             "Microsoft.NETCore.App": {
               "suppressParent": "All",

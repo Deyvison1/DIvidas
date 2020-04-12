@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Dividas.WebApi.Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Dividas.WebApi.Controllers
 {
@@ -10,18 +13,33 @@ namespace Dividas.WebApi.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly DividaContext _context;
+
+        public ValuesController(DividaContext context) { _context = context; }
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public async Task<IActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            try {
+                var result = await _context.Dividas.ToListAsync();
+                return Ok(result);
+            }
+            catch(System.Exception) {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou");
+            }
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return "value";
+            try {
+                var results = await _context.Dividas.FindAsync(id);
+                return Ok(results);
+            }
+            catch(System.Exception) {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou");
+            }
         }
 
         // POST api/values
