@@ -11,10 +11,13 @@ namespace Dividas.Repositorio
          Task<bool> SaveChangesAsync();
 
          // DIVIDAS
+          
          Task<Divida[]> GetAllDividasAsyncByTitulo(string titulo);
          Task<Divida[]> GetAllDividasAsyncByValor(double valor);
-         Task<Divida[]> GetAllAsync();
+         
          Task<Divida> GetAllDividasAsyncById(int id);
+         
+         Task<Divida[]> GetAllAsync();
          
     }
 }

@@ -13,19 +13,19 @@ export class DividasComponent implements OnInit {
   /* Variaveis */
   modalRef: BsModalRef;
   title = 'Dividas';
-  dividas: Divida[];
+  dividas: Divida[] = [];
   imagemLargura = 50;
   imagemMargem = 3;
   mostrarImagem = false;
-  dividasFiltradas: Divida [];
-  _filtroLista = '';
+  dividasFiltradas: Divida[] = [];
+  _filtroLista =  '';
 
   get filtroLista(): string {
     return this._filtroLista;
   }
   set filtroLista(value: string) {
     this._filtroLista = value;
-    this.dividasFiltradas = this.filtroLista ? this.filtrarLista(this.filtroLista) : this.dividas;
+    this.dividasFiltradas = this._filtroLista ? this.filtrarLista(this.filtroLista) : this.dividas;
   }
   constructor(private dividaService: DividaService,
       private modalService: BsModalService
@@ -41,17 +41,38 @@ export class DividasComponent implements OnInit {
 
   filtrarLista(filtrarPor: string): Divida[] {
     /*
-    if (!isNaN(Number(filtrarPor))) {modalRef
+    if (!isNaN(Number(filtrarPor))) {
       const n = Number(filtrarPor);
       return this.dividas.filter(filtrar => filtrar.valor === n);
-    }modalRef
-    */
+    }
+
     filtrarPor = filtrarPor.toLocaleLowerCase();
     return this.dividas.filter(dividas => dividas.titulo.toLocaleLowerCase().indexOf(filtrarPor)
     !== -1 || dividas.valor.toString().indexOf(filtrarPor) !== -1
     );
+    */
+    if (!isNaN(Number(filtrarPor))) {
+      const n = +filtrarPor;
+      this.dividaService.getDividasByValor(n).subscribe(
+        data => {
+          this.dividasFiltradas = data;
+          return this.dividas;
+        }, error => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.dividaService.getDividasByTitulo(filtrarPor).subscribe(
+        data => {
+          this.dividasFiltradas = data;
+          return this.dividas;
+        }, error => {
+          console.log(error);
+        }
+      );
+    }
+    return [];
   }
-
 
   mudarImagem() {
     this.mostrarImagem = !this.mostrarImagem;
@@ -66,5 +87,4 @@ export class DividasComponent implements OnInit {
       console.log(error);
     });
   }
-
 }

@@ -15,12 +15,15 @@ export class DividaService {
   getAllDivida(): Observable<Divida[]> {
     return this.http.get<Divida[]>(this.baseURL);
   }
-  getDividaByTitulo(titulo: string): Observable<Divida[]> {
-    return this.http.get<Divida[]>(`${this.baseURL}/getByTitulo/${titulo}`);
+
+  getDividasByTitulo(titulo: string): Observable<Divida[]> {
+    return this.http.get<Divida[]>(`${this.baseURL}/getAllTitulo/${titulo}`);
   }
-  getByValor(valor: number): Observable<Divida[]> {
-    return this.http.get<Divida[]>(`${this.baseURL}/getByValor/${valor}`);
+
+  getDividasByValor(valor: number): Observable<Divida[]> {
+    return this.http.get<Divida[]>(`${this.baseURL}/getAllValor/${valor}`);
   }
+
   getDividaById(id: number): Observable<Divida> {
     return this.http.get<Divida>(`${this.baseURL}/${id}`);
   }
