@@ -46,7 +46,7 @@ namespace Dividas.Repositorio
 
         public async Task<Divida[]> GetAllDividasAsyncByTitulo(string titulo)
         {
-            var result = _context.Dividas.AsNoTracking().Where(x => x.Titulo.ToLower().Contains(titulo.ToLower()));
+            var result = _context.Dividas.AsNoTracking().OrderByDescending(x => x.Titulo.ToLower().Contains(titulo.ToLower()));
             return await result.ToArrayAsync();
         }
 

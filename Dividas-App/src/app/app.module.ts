@@ -10,6 +10,10 @@ import { DividasComponent } from './dividas/dividas.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './nav/nav.component';
 import { FormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap';
+import { BsDropdownModule } from 'ngx-bootstrap';
+import { TooltipModule } from 'ngx-bootstrap';
+
 
 
 
@@ -22,6 +26,9 @@ import { FormsModule } from '@angular/forms';
    imports: [
       BrowserModule,
       AppRoutingModule,
+      ModalModule.forRoot(),
+      BsDropdownModule.forRoot(),
+      TooltipModule.forRoot(),
       HttpClientModule,
       FormsModule
    ],

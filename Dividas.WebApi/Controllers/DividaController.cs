@@ -35,7 +35,7 @@ namespace Dividas.WebApi.Controllers
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro no GetId");
             }
         }
-        [HttpGet("getByTitulo/{titulo}")]
+        [HttpGet("getByTitulo/{Titulo}")]
         public async Task<IActionResult> Get(string titulo) {
             try {
                 var result = await _repo.GetAllDividasAsyncByTitulo(titulo);
@@ -45,7 +45,7 @@ namespace Dividas.WebApi.Controllers
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro no GetId");
             }
         }
-        [HttpGet("getByValor/{valor}")]
+        [HttpGet("getByValor/{Valor}")]
         public async Task<IActionResult> Get(double valor) {
             try {
                 var result = await _repo.GetAllDividasAsyncByValor(valor);
