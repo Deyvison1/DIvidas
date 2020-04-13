@@ -1,7 +1,7 @@
-using Dividas.WebApi.Model;
+using Dividas.Dominio;
 using Microsoft.EntityFrameworkCore;
 
-namespace Dividas.WebApi.Data
+namespace Dividas.Repositorio
 {
     public class DividaContext : DbContext
     {

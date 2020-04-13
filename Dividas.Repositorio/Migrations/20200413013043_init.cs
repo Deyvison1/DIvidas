@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Dividas.WebApi.Migrations
+namespace Dividas.Repositorio.Migrations
 {
     public partial class init : Migration
     {

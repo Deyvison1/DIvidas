@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Dividas.WebApi.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Dividas.Repositorio;
+using Dividas.Dominio;
 
 namespace Dividas.WebApi.Controllers
 {
@@ -34,7 +35,7 @@ namespace Dividas.WebApi.Controllers
         public async Task<IActionResult> Get(int id)
         {
             try {
-                var results = await _context.Dividas.FindAsync(id);
+                var results = await _context.Dividas.FirstOrDefaultAsync(x => x.Id == id);
                 return Ok(results);
             }
             catch(System.Exception) {

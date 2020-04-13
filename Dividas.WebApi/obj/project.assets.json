@@ -4566,6 +4566,31 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "Dividas.Dominio/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Dividas.Dominio.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Dividas.Dominio.dll": {}
+        }
+      },
+      "Dividas.Repositorio/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Dividas.Dominio": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "2.2.0",
+          "Microsoft.EntityFrameworkCore.Sqlite": "2.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Dividas.Repositorio.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Dividas.Repositorio.dll": {}
+        }
       }
     }
   },
@@ -12364,10 +12389,22 @@
         "system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
+    },
+    "Dividas.Dominio/1.0.0": {
+      "type": "project",
+      "path": "../Dividas.Dominio/Dividas.Dominio.csproj",
+      "msbuildProject": "../Dividas.Dominio/Dividas.Dominio.csproj"
+    },
+    "Dividas.Repositorio/1.0.0": {
+      "type": "project",
+      "path": "../Dividas.Repositorio/Dividas.Repositorio.csproj",
+      "msbuildProject": "../Dividas.Repositorio/Dividas.Repositorio.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
+      "Dividas.Dominio >= 1.0.0",
+      "Dividas.Repositorio >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.EntityFrameworkCore.Sqlite >= 2.0.0",
@@ -12401,7 +12438,14 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {}
+          "projectReferences": {
+            "/home/deyvison/Documents/Dividas/Dividas/Dividas.Dominio/Dividas.Dominio.csproj": {
+              "projectPath": "/home/deyvison/Documents/Dividas/Dividas/Dividas.Dominio/Dividas.Dominio.csproj"
+            },
+            "/home/deyvison/Documents/Dividas/Dividas/Dividas.Repositorio/Dividas.Repositorio.csproj": {
+              "projectPath": "/home/deyvison/Documents/Dividas/Dividas/Dividas.Repositorio/Dividas.Repositorio.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
