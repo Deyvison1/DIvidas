@@ -28,4 +28,11 @@ export class DividaService {
     return this.http.get<Divida>(`${this.baseURL}/${id}`);
   }
 
+  postDivida(divida: Divida) {
+    return this.http.post(this.baseURL, divida);
+  }
+
+  putDivida(divida: Divida) {
+    return this.http.put(`${this.baseURL}/${divida.id}`, divida);
+  }
 }

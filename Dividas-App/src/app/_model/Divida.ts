@@ -1,5 +1,5 @@
 export class Divida {
-        idd: number;
+        id: number;
         imagemURL: string;
         titulo: string;
         dataCompra: Date;

@@ -9,11 +9,11 @@ import { DividasComponent } from './dividas/dividas.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './nav/nav.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { TooltipModule } from 'ngx-bootstrap';
-
+import { BsDatepickerModule } from 'ngx-bootstrap';
 
 
 
@@ -30,6 +30,8 @@ import { TooltipModule } from 'ngx-bootstrap';
       BsDropdownModule.forRoot(),
       TooltipModule.forRoot(),
       HttpClientModule,
+      ReactiveFormsModule,
+      BsDatepickerModule.forRoot(),
       FormsModule
    ],
    providers: [
