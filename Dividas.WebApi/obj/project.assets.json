@@ -12418,11 +12418,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/deyvison/Documentos/Dividas/Dividas.WebApi/Dividas.WebApi.csproj",
+      "projectUniqueName": "/home/deyvison/Documents/Dividas/Dividas.WebApi/Dividas.WebApi.csproj",
       "projectName": "Dividas.WebApi",
-      "projectPath": "/home/deyvison/Documentos/Dividas/Dividas.WebApi/Dividas.WebApi.csproj",
+      "projectPath": "/home/deyvison/Documents/Dividas/Dividas.WebApi/Dividas.WebApi.csproj",
       "packagesPath": "/home/deyvison/.nuget/packages/",
-      "outputPath": "/home/deyvison/Documentos/Dividas/Dividas.WebApi/obj/",
+      "outputPath": "/home/deyvison/Documents/Dividas/Dividas.WebApi/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"
@@ -12439,11 +12439,11 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "/home/deyvison/Documentos/Dividas/Dividas.Dominio/Dividas.Dominio.csproj": {
-              "projectPath": "/home/deyvison/Documentos/Dividas/Dividas.Dominio/Dividas.Dominio.csproj"
+            "/home/deyvison/Documents/Dividas/Dividas.Dominio/Dividas.Dominio.csproj": {
+              "projectPath": "/home/deyvison/Documents/Dividas/Dividas.Dominio/Dividas.Dominio.csproj"
             },
-            "/home/deyvison/Documentos/Dividas/Dividas.Repositorio/Dividas.Repositorio.csproj": {
-              "projectPath": "/home/deyvison/Documentos/Dividas/Dividas.Repositorio/Dividas.Repositorio.csproj"
+            "/home/deyvison/Documents/Dividas/Dividas.Repositorio/Dividas.Repositorio.csproj": {
+              "projectPath": "/home/deyvison/Documents/Dividas/Dividas.Repositorio/Dividas.Repositorio.csproj"
             }
           }
         }
