@@ -14,6 +14,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Dividas.Repositorio;
 using Dividas.Dominio;
+using AutoMapper;
 
 namespace Dividas.WebApi
 {
@@ -30,6 +31,8 @@ namespace Dividas.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IDividasRepositorio , DividaRepositorio>();
+
+            services.AddAutoMapper();
             services.AddDbContext<DividaContext>(x => x.UseSqlite(Configuration.GetConnectionString("Conexao")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

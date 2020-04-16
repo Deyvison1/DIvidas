@@ -114,7 +114,7 @@ export class DividasComponent implements OnInit {
 
   validacao() {
     this.registerForm = this.fb.group({
-      titulo: ['' , [Validators.required, Validators.minLength(4)]],
+      titulo: ['' , [Validators.required, Validators.minLength(3), Validators.maxLength(150)]],
       imagemURL: [],
       dataCompra: ['' , Validators.required],
       vencimento: ['', Validators.required],

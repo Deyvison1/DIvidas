@@ -3,6 +3,9 @@ using Dividas.Repositorio;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Dividas.Dominio;
+using AutoMapper;
+using Dividas.WebApi.Dtos;
+using System.Collections.Generic;
 
 namespace Dividas.WebApi.Controllers
 {
@@ -11,21 +14,27 @@ namespace Dividas.WebApi.Controllers
     public class DividaController : ControllerBase
     {
         private readonly IDividasRepositorio _repo;
-        public DividaController(IDividasRepositorio repo)
+        private readonly IMapper _mapper;
+        public DividaController(IDividasRepositorio repo, IMapper mapper)
         {
             _repo = repo;
+            _mapper = mapper;
         }
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             try
             {
-                var results = await _repo.GetAllAsync();
+                // Aqui vem todas Informações
+                var dividas = await _repo.GetAllAsync();
+                // Aqui ja separo os itens do meu desejo 
+                var results = _mapper.Map<DividaDto[]>(dividas);
+                
                 return Ok(results);
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro no getAll");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro no getAll {ex.Message}");
             }
         }
         
@@ -35,7 +44,8 @@ namespace Dividas.WebApi.Controllers
             try
             {
                 var dividas = await _repo.GetAllDividasAsyncByTitulo(titulo);
-                return Ok(dividas);
+                var results = _mapper.Map<DividaDto[]>(dividas);
+                return Ok(results);
             }
             catch (System.Exception)
             {
@@ -48,7 +58,8 @@ namespace Dividas.WebApi.Controllers
             try
             {
                 var dividas = await _repo.GetAllDividasAsyncByValor(valor);
-                return Ok(dividas);
+                var results = _mapper.Map<DividaDto[]>(dividas);
+                return Ok(results);
             }
             catch (System.Exception)
             {
@@ -62,7 +73,8 @@ namespace Dividas.WebApi.Controllers
             try
             {
                 var result = await _repo.GetAllDividasAsyncById(id);
-                return Ok(result);
+                var results = _mapper.Map<DividaDto>(result);
+                return Ok(results);
             }
             catch (System.Exception)
             {
@@ -72,36 +84,39 @@ namespace Dividas.WebApi.Controllers
         
         
         [HttpPost]
-        public async Task<IActionResult> Post(Divida model)
+        public async Task<IActionResult> Post(DividaDto model)
         {
             try
             {
-                _repo.Add(model);
+                var divida = _mapper.Map<Divida>(model);
+                _repo.Add(divida);
 
                 if (await _repo.SaveChangesAsync())
                 {
-                    return Created($"/api/divida/{model.Id}", model);
+                    return Created($"/api/divida/{model.Id}", _mapper.Map<DividaDto>(divida));
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro no GetId");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro no GetId {ex.Message}");
             }
             return BadRequest();
         }
         [HttpPut("{Id}")]
-        public async Task<IActionResult> Put(int id, Divida model)
+        public async Task<IActionResult> Put(int id, DividaDto model)
         {
             try
             {
                 var divida = await _repo.GetAllDividasAsyncById(id);
                 if (divida == null) return NotFound();
 
-                _repo.Update(model);
+                _mapper.Map(model, divida);
+
+                _repo.Update(divida);
 
                 if (await _repo.SaveChangesAsync())
                 {
-                    return Created($"/api/divida/{model.Id}", model);
+                    return Created($"/api/divida/{model.Id}", _mapper.Map<DividaDto>(divida));
                 }
             }
             catch (System.Exception)
