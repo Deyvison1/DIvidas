@@ -25,6 +25,8 @@ export class DividasComponent implements OnInit {
   dividasFiltradas: Divida[] = [];
   _filtroLista =  '';
   registerForm: FormGroup;
+  bodyDeletarDivida = '';
+
 
   get filtroLista(): string {
     return this._filtroLista;
@@ -48,6 +50,21 @@ export class DividasComponent implements OnInit {
   novaDivida(template: any) {
     this.abrirModal(template);
     this.divida = new Divida();
+  }
+  excluirDivida(divida: Divida, template: any) {
+    this.abrirModal(template);
+    this.divida = divida;
+    this.bodyDeletarDivida = `Tem certeza que deseja deletar ${divida.titulo}, Valor: ${divida.valor}`;
+  }
+  confirmeDelete(template: any) {
+    this.dividaService.deletarDivida(this.divida.id).subscribe(
+      () => {
+        template.hide();
+        this.getDividas();
+      }, error => {
+        console.log(error);
+      }
+    );
   }
   editarDivida(divida: Divida, template: any) {
     this.abrirModal(template);

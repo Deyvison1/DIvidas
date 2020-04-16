@@ -35,4 +35,8 @@ export class DividaService {
   putDivida(divida: Divida) {
     return this.http.put(`${this.baseURL}/${divida.id}`, divida);
   }
+
+  deletarDivida(id: number) {
+    return this.http.delete(`${this.baseURL}/${id}`);
+  }
 }
