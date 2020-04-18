@@ -25,6 +25,7 @@
           </button>
         </th>
         <th>Titulo</th>
+        <th>Data da Compra</th>
         <th>Vencimento</th>
         <th>Forma de Pagamento</th>
         <th>Valor</th>
@@ -37,7 +38,8 @@
           <img *ngIf="mostrarImagem" src="http://localhost:5000/img/{{divida.imagemURL}}"
             [style.width.px]="imagemLargura" [style.margin.px]="imagemMargem"></td>
         <td>{{ divida.titulo | lowercase }}</td>
-        <td>{{ divida.vencimento | date: "dd/MM/yyyy" }}</td>
+        <td>{{ divida.dataCompra | date: 'dd/MM/yyyy hh:mm' }}</td>
+        <td>{{ divida.vencimento | date: 'dd/MM/yyyy hh:mm' }}</td>
         <td>
           <div *ngIf="divida.formaPagamento == 2">
             Cartão
@@ -103,10 +105,9 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label>Data Compra</label>
-              <input type="text" placeholder="Data de Compra" 
-                bsDatepicker
+              <input type="datetime-local" placeholder="Data de Compra"
                 [ngClass]="{'is-invalid': registerForm.get('dataCompra').errors && registerForm.get('dataCompra').touched}"
-                class="form-control" formControlName="dataCompra">
+                class="form-control" formControlName="dataCompra" >
               <div *ngIf="registerForm.get('dataCompra').hasError('required') && registerForm.get('dataCompra').touched"
                 class="invalid-feedback">
                 Data da Compra é Obrigatória
@@ -114,7 +115,7 @@
             </div>
             <div class="form-group col-md-6">
               <label>Vencimento</label>
-              <input type="text" placeholder="Data de Vencimento" bsDatepicker
+              <input type="datetime-local" placeholder="Data de Vencimento"
                 [ngClass]="{'is-invalid': registerForm.get('vencimento').errors && registerForm.get('vencimento').touched}"
                 class="form-control" formControlName="vencimento">
               <div *ngIf="registerForm.get('vencimento').hasError('required') && registerForm.get('vencimento').touched"

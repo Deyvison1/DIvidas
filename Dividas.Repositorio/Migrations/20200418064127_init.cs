@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Dividas.Repositorio.Migrations
@@ -12,7 +13,7 @@ namespace Dividas.Repositorio.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ImagemURL = table.Column<string>(nullable: true),
                     Titulo = table.Column<string>(nullable: true),
                     DataCompra = table.Column<DateTime>(nullable: false),

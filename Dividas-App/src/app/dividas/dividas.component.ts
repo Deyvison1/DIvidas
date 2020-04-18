@@ -18,7 +18,7 @@ export class DividasComponent implements OnInit {
   /* Variaveis */
   title = 'Dividas';
   dividas: Divida[];
-  divida: Divida;
+  divida: Divida = new Divida();
   imagemLargura = 50;
   imagemMargem = 3;
   mostrarImagem = false;
@@ -66,10 +66,10 @@ export class DividasComponent implements OnInit {
       }
     );
   }
-  editarDivida(divida: Divida, template: any) {
+  editarDivida(_divida: Divida, template: any) {
+    this.divida = _divida;
     this.abrirModal(template);
-    this.divida = divida;
-    this.registerForm.patchValue(divida);
+    this.registerForm.patchValue(this.divida);
   }
 
   ngOnInit() {
@@ -158,6 +158,7 @@ export class DividasComponent implements OnInit {
   getDividas() {
     this.dividaService.getAllDivida().subscribe( (_dividas: Divida[]) => {
       this.dividas = _dividas;
+      
       this.dividasFiltradas = this.dividas;
       console.log(_dividas);
     }, error => {

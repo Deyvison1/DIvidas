@@ -33,7 +33,7 @@ namespace Dividas.WebApi
             services.AddScoped<IDividasRepositorio , DividaRepositorio>();
 
             services.AddAutoMapper();
-            services.AddDbContext<DividaContext>(x => x.UseSqlite(Configuration.GetConnectionString("Conexao")));
+            services.AddDbContext<DividaContext>(x => x.UseMySql(Configuration.GetConnectionString("Conexao")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
