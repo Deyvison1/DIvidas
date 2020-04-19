@@ -14,7 +14,8 @@ import { ModalModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { TooltipModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap';
-
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -29,6 +30,11 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
       ModalModule.forRoot(),
       BsDropdownModule.forRoot(),
       TooltipModule.forRoot(),
+      BrowserAnimationsModule,
+      ToastrModule.forRoot({
+         timeOut: 10000,
+         preventDuplicates: true,
+      }),
       HttpClientModule,
       ReactiveFormsModule,
       BsDatepickerModule.forRoot(),

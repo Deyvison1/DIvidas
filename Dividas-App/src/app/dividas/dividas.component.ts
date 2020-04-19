@@ -3,6 +3,7 @@ import { DividaService } from '../_service/divida.service';
 import { Divida } from '../_model/Divida';
 import { BsModalRef, BsModalService, ptBrLocale, defineLocale, BsLocaleService } from 'ngx-bootstrap';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 defineLocale('pt-br', ptBrLocale);
 
@@ -38,7 +39,8 @@ export class DividasComponent implements OnInit {
   constructor(private dividaService: DividaService,
       private modalService: BsModalService,
       private fb: FormBuilder,
-      private localeService: BsLocaleService
+      private localeService: BsLocaleService,
+      private toast: ToastrService
     ) {
       this.localeService.use('pt-br');
     }
@@ -61,8 +63,9 @@ export class DividasComponent implements OnInit {
       () => {
         template.hide();
         this.getDividas();
+        this.toast.success('Divida Deletada com Sucesso!');
       }, error => {
-        console.log(error);
+        this.toast.error(`Erro ao Deletar Divida. CODE: ${error}`);
       }
     );
   }
@@ -136,8 +139,9 @@ export class DividasComponent implements OnInit {
         (novaDivida: Divida) => {
           template.hide();
           this.getDividas();
+          this.toast.success('Divida Cadastrada com Sucesso!');
         }, error => {
-          console.log(error);
+          this.toast.error(`Erro ao Cadastrar Divida. CODE: ${error}`);
         }
       );
       } else {
@@ -147,8 +151,9 @@ export class DividasComponent implements OnInit {
           () => {
             template.hide();
             this.getDividas();
+            this.toast.success('Divida Atualizada com Sucesso!');
           }, error => {
-            console.log(error);
+            this.toast.error(`Erro ao Atualizar Divida. CODE: ${error}`);
           }
         );
       }
