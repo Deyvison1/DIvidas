@@ -10,7 +10,7 @@ import { DividaService } from '../_service/divida.service';
 })
 export class DividasPagaComponent implements OnInit {
 
-  title = 'Divida Paga';
+  title = 'Dividas Paga';
   imagemLargura = 50;
   imagemMargem = 3;
   mostrarImagem = false;

@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DividasPendentesComponent implements OnInit {
 
-  title = 'Dividas Pendetes';
+  title = 'Dividas Pendete';
   imagemLargura = 50;
   imagemMargem = 3;
   mostrarImagem = false;
