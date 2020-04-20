@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DividasPendentesComponent implements OnInit {
 
-  title = 'Dividas Pendete';
+  title = 'Pendentes';
   imagemLargura = 50;
   imagemMargem = 3;
   mostrarImagem = false;
@@ -20,7 +20,8 @@ export class DividasPendentesComponent implements OnInit {
   _filtroLista: string;
   dividasFiltradas: Divida[] = [];
   dividaAserPaga: Divida;
-  bodyPagarDivida: string;
+  tituloDAserPaga: string;
+  valorDAserPaga: number;
 
   get filtroLista(): string {
     return this._filtroLista;
@@ -44,7 +45,8 @@ export class DividasPendentesComponent implements OnInit {
   pagarDivida(template: any, divida: Divida) {
     this.abrirModal(template);
     this.dividaAserPaga = divida;
-    this.bodyPagarDivida = `Tem certeza que deseja Pagar\n ${divida.titulo}, Valor: ${divida.valor}`;
+    this.tituloDAserPaga = this.dividaAserPaga.titulo;
+    this.valorDAserPaga = this.dividaAserPaga.valor;
   }
 
   confirmPagamento(template: any) {
@@ -78,7 +80,7 @@ export class DividasPendentesComponent implements OnInit {
     */
     if (!isNaN(Number(filtrarPor))) {
       const n = +filtrarPor;
-      this.dividaService.getDividasByValor(n).subscribe(
+      this.dividaService.getDividasPendentesValor(n).subscribe(
         data => {
           this.dividasFiltradas = data;
           return this.dividas;
@@ -87,7 +89,7 @@ export class DividasPendentesComponent implements OnInit {
         }
       );
     } else {
-      this.dividaService.getDividasByTitulo(filtrarPor).subscribe(
+      this.dividaService.getDividasPendentesTitulo(filtrarPor).subscribe(
         data => {
           this.dividasFiltradas = data;
           return this.dividas;

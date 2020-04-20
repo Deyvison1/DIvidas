@@ -21,6 +21,12 @@ namespace Dividas.Repositorio
 
          // Dividas Pagas
          Task<Divida[]> GetAllDividasPagaAsync();
+         Task<Divida[]> GetDividasPagaTituloAsync(string titulo);
+         Task<Divida[]> GetDividasPagaValorAsync(double valor);
+
+         // Dividas Pendetes
          Task<Divida[]> GetAllDividasPendentesAsync();
+         Task<Divida[]> GetDividasPendentesTituloAsync(string titulo);
+         Task<Divida[]> GetDividasPendentesValorAsync(double valor);
     }
 }

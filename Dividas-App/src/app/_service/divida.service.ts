@@ -19,6 +19,18 @@ export class DividaService {
   getAllDividasPaga(): Observable<Divida[]> {
     return this.http.get<Divida[]>(`${this.baseURL}/dividasPaga`);
   }
+  getDividasPagasTitulo(titulo: string): Observable<Divida[]> {
+    return this.http.get<Divida[]>(`${this.baseURL}/getDividasPagasTitulo/${titulo}`);
+  }
+  getDividasPagasValor(valor: number): Observable<Divida[]> {
+    return this.http.get<Divida[]>(`${this.baseURL}/getDividasPagasValor/${valor}`);
+  }
+  getDividasPendentesTitulo(titulo: string): Observable<Divida[]> {
+    return this.http.get<Divida[]>(`${this.baseURL}/getDividasPendentesTitulo/${titulo}`);
+  }
+  getDividasPendentesValor(valor: number): Observable<Divida[]> {
+    return this.http.get<Divida[]>(`${this.baseURL}/getDividasPendentesValor/${valor}`);
+  }
   getAllDividasPendentes(): Observable<Divida[]> {
     return this.http.get<Divida[]>(`${this.baseURL}/dividasPendentes`);
   }

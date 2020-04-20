@@ -10,7 +10,7 @@ import { DividaService } from '../_service/divida.service';
 })
 export class DividasPagaComponent implements OnInit {
 
-  title = 'Dividas Paga';
+  title = 'Pagas';
   imagemLargura = 50;
   imagemMargem = 3;
   mostrarImagem = false;
@@ -45,7 +45,7 @@ export class DividasPagaComponent implements OnInit {
     */
     if (!isNaN(Number(filtrarPor))) {
       const n = +filtrarPor;
-      this.dividaService.getDividasByValor(n).subscribe(
+      this.dividaService.getDividasPagasValor(n).subscribe(
         data => {
           this.dividasFiltradas = data;
           return this.dividas;
@@ -54,7 +54,7 @@ export class DividasPagaComponent implements OnInit {
         }
       );
     } else {
-      this.dividaService.getDividasByTitulo(filtrarPor).subscribe(
+      this.dividaService.getDividasPagasTitulo(filtrarPor).subscribe(
         data => {
           this.dividasFiltradas = data;
           return this.dividas;

@@ -1,4 +1,4 @@
-<h1>{{title}}</h1>
+<app-titulo [title]="title"></app-titulo>
 <hr>
 <div class="d-flex">
   <div class="form-inline mr-auto">
@@ -77,13 +77,14 @@
       			</button>
     		</div>
     		<div class="modal-body">
-      			<p>{{bodyPagarDivida}}</p>
+            <p>Tem certeza que deseja Pagar</p>
+            <p>{{tituloDAserPaga | uppercase}},<br> Valor: {{valorDAserPaga | currency: 'R$: '}}</p>
     		</div>    
     		<div class="modal-footer btn-group d-flex">      
-      			<button type="button" class="btn btn-outline-primary" (click)="confirm.hide()">
+      			<button type="button" class="btn btn-outline-danger" (click)="confirm.hide()">
         			<i class="fas fa-ban"></i>&nbsp; CENCELAR
       			</button>
-      			<button type="button" class="btn btn-outline-danger" (click)="confirmPagamento(confirm)">
+      			<button type="button" class="btn btn-outline-success" (click)="confirmPagamento(confirm)">
               <i class="fas fa-money-bill-alt"></i>&nbsp; PAGAR
         		</button>
     		</div>

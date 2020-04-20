@@ -16,10 +16,10 @@ import { TooltipModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContatosComponent } from './contatos/contatos.component';
 import { DividasPagaComponent } from './dividasPaga/dividasPaga.component';
 import { DividasPendentesComponent } from './dividasPendentes/dividasPendentes.component';
+import { TituloComponent } from './_shared/titulo/titulo.component';
 
 
 @NgModule({
@@ -27,10 +27,10 @@ import { DividasPendentesComponent } from './dividasPendentes/dividasPendentes.c
       AppComponent,
       DividasComponent,
       NavComponent,
-      DashboardComponent,
       ContatosComponent,
       DividasPagaComponent,
-      DividasPendentesComponent
+      DividasPendentesComponent,
+      TituloComponent
    ],
    imports: [
       BrowserModule,

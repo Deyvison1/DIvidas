@@ -1,4 +1,4 @@
-<h1>{{title}}</h1>
+<app-titulo [title]="title"></app-titulo>
 <hr>
 <div class="d-flex">
   <div class="form-inline mr-auto">
@@ -159,6 +159,19 @@
               <div *ngIf="registerForm.get('formaPagamento').hasError('required') && registerForm.get('formaPagamento').touched"
                 class="invalid-feedback">
                 Forma de Pagamento e Obrigatória
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Situação</label>
+              <select class="form-control"
+                [ngClass]="{'is-invalid': registerForm.get('situacao').errors && registerForm.get('situacao').touched}"
+                formControlName="situacao">
+                <option value="0">Pendente</option>
+                <option value="1">Paga</option>
+              </select>
+              <div *ngIf="registerForm.get('situacao').hasError('required') && registerForm.get('situacao').touched"
+                class="invalid-feedback">
+                Situação e Obrigatória
               </div>
             </div>
           </div>

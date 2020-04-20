@@ -123,6 +123,7 @@ export class DividasComponent implements OnInit {
       vencimento: ['', Validators.required],
       formaPagamento: ['', [Validators.required, Validators.max(2), Validators.min(1)]],
       valor: ['', [Validators.required, Validators.min(0.1)]],
+      situacao: ['', [Validators.required]]
     });
   }
 

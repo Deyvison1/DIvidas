@@ -71,6 +71,67 @@ namespace Dividas.WebApi.Controllers
                 return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro no getAll {ex.Message}");
             }
         }
+        // Buscar Dividas Pagas por Titulo
+        [HttpGet("getDividasPagasTitulo/{titulo}")]
+        public async Task<IActionResult> GetDividasPagasTitulo(string titulo)
+        {
+            try
+            {
+                var dividas = await _repo.GetDividasPagaTituloAsync(titulo);
+                var results = _mapper.Map<DividaDto[]>(dividas);
+                return Ok(results);
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro no getAll");
+            }
+        }
+        // Buscar Dividas Pagas por Valor
+
+        [HttpGet("getDividasPagasValor/{valor}")]
+        public async Task<IActionResult> GetDividasPagasValor(double valor)
+        {
+            try
+            {
+                var dividas = await _repo.GetDividasPagaValorAsync(valor);
+                var results = _mapper.Map<DividaDto[]>(dividas);
+                return Ok(results);
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro no getAll");
+            }
+        }
+        // Buscar Dividas Pendetes por Titulo
+        [HttpGet("getDividasPendentesTitulo/{titulo}")]
+        public async Task<IActionResult> GetDividasPendentesTitulo(string titulo)
+        {
+            try
+            {
+                var dividas = await _repo.GetDividasPendentesTituloAsync(titulo);
+                var results = _mapper.Map<DividaDto[]>(dividas);
+                return Ok(results);
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro no getAll");
+            }
+        }
+        // Buscar Dividas Pendentes por Valor
+        [HttpGet("getDividasPendentesValor/{valor}")]
+        public async Task<IActionResult> GetDividasPendentesValor(double valor)
+        {
+            try
+            {
+                var dividas = await _repo.GetDividasPendentesValorAsync(valor);
+                var results = _mapper.Map<DividaDto[]>(dividas);
+                return Ok(results);
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro no getAll");
+            }
+        }
         
         [HttpGet("getAllTitulo/{titulo}")]
         public async Task<IActionResult> Get(string titulo)
@@ -86,6 +147,7 @@ namespace Dividas.WebApi.Controllers
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro no getAll");
             }
         }
+
         [HttpGet("getAllValor/{valor}")]
         public async Task<IActionResult> Get(double valor)
         {
