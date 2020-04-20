@@ -14,6 +14,7 @@ namespace Dividas.Dominio
         public DateTime Vencimento     { get; set; }
         public int FormaPagamento      { get; set; }
         public double Valor            { get; set; }
+        public int Situacao            { get; set; }
         //public Usuario Usuario         { get; set; }
         //public int UsuarioId           { get; set; }
         public Divida() { }

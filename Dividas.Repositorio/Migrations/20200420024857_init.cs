@@ -19,7 +19,8 @@ namespace Dividas.Repositorio.Migrations
                     DataCompra = table.Column<DateTime>(nullable: false),
                     Vencimento = table.Column<DateTime>(nullable: false),
                     FormaPagamento = table.Column<int>(nullable: false),
-                    Valor = table.Column<double>(nullable: false)
+                    Valor = table.Column<double>(nullable: false),
+                    Situacao = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

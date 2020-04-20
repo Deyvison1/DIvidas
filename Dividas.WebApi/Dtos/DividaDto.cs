@@ -11,6 +11,7 @@ namespace Dividas.WebApi.Dtos
         public string Titulo           { get; set; }
         [Required(ErrorMessage = "O campo {0} é Obrigatório")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        public int Situacao { get; set; }
         public DateTime DataCompra     { get; set; }
         [Required(ErrorMessage = "O campo {0} é Obrigatório")]
         public DateTime Vencimento     { get; set; }

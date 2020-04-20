@@ -6,4 +6,5 @@ export class Divida {
         vencimento: Date;
         formaPagamento: number;
         valor: number;
+        situacao: number;
 }

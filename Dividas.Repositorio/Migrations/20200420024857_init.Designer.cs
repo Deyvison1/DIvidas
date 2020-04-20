@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dividas.Repositorio.Migrations
 {
     [DbContext(typeof(DividaContext))]
-    [Migration("20200418064127_init")]
+    [Migration("20200420024857_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,6 +29,8 @@ namespace Dividas.Repositorio.Migrations
                     b.Property<int>("FormaPagamento");
 
                     b.Property<string>("ImagemURL");
+
+                    b.Property<int>("Situacao");
 
                     b.Property<string>("Titulo");
 

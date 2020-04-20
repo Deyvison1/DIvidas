@@ -38,7 +38,6 @@ namespace Dividas.Repositorio
         {
             return await _context.Dividas.AsNoTracking().OrderByDescending(x => x.Id).ToArrayAsync();
         }
-        
         public async Task<Divida> GetAllDividasAsyncById(int id)
         {
             return await _context.Dividas.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
@@ -58,7 +57,17 @@ namespace Dividas.Repositorio
                     .Where(result => result.Valor == valor);
             return await query.ToArrayAsync();
         }
-        
 
+        public async Task<Divida[]> GetAllDividasPagaAsync()
+        {
+            IQueryable<Divida> query = _context.Dividas.Where(x => x.Situacao == 1);
+            return await query.ToArrayAsync();
+        }
+
+        public async Task<Divida[]> GetAllDividasPendentesAsync()
+        {
+            IQueryable<Divida> query = _context.Dividas.Where(x => x.Situacao == 0);
+            return await query.ToArrayAsync();
+        }
     }
 }

@@ -1,19 +1,22 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" routerLink="dividas">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pagas</a>
+      <li class="nav-item" routerLinkActive>
+        <a class="nav-link" routerLink="dividas-paga">
+          <i class="fas fa-thumbs-up"></i>&nbsp; Pagas</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pendentes</a>
+      <li class="nav-item" routerLinkActive>
+        <a class="nav-link" routerLink="dividas-pendentes">
+          <i class="fas fa-clock"></i>&nbsp; Pendentes</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Contato</a>
+      <li class="nav-item" routerLinkActive>
+        <a class="nav-link" routerLink="contatos">
+          <i class="fas fa-address-book"></i>&nbsp; Contato</a>
       </li>
     </ul>
   </div>

@@ -28,6 +28,8 @@ namespace Dividas.Repositorio.Migrations
 
                     b.Property<string>("ImagemURL");
 
+                    b.Property<int>("Situacao");
+
                     b.Property<string>("Titulo");
 
                     b.Property<double>("Valor");

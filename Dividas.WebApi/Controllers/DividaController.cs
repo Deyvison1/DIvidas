@@ -37,6 +37,40 @@ namespace Dividas.WebApi.Controllers
                 return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro no getAll {ex.Message}");
             }
         }
+        [HttpGet("dividasPaga")]
+        public async Task<IActionResult> GetAllDividasPaga()
+        {
+            try
+            {
+                // Aqui vem todas Informações
+                var dividas = await _repo.GetAllDividasPagaAsync();
+                // Aqui ja separo os itens do meu desejo 
+                var results = _mapper.Map<DividaDto[]>(dividas);
+                
+                return Ok(results);
+            }
+            catch (System.Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro no getAll {ex.Message}");
+            }
+        }
+        [HttpGet("dividasPendentes")]
+        public async Task<IActionResult> GetAllDividasPendetes()
+        {
+            try
+            {
+                // Aqui vem todas Informações
+                var dividas = await _repo.GetAllDividasPendentesAsync();
+                // Aqui ja separo os itens do meu desejo 
+                var results = _mapper.Map<DividaDto[]>(dividas);
+                
+                return Ok(results);
+            }
+            catch (System.Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro no getAll {ex.Message}");
+            }
+        }
         
         [HttpGet("getAllTitulo/{titulo}")]
         public async Task<IActionResult> Get(string titulo)

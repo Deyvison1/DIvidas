@@ -163,7 +163,6 @@ export class DividasComponent implements OnInit {
   getDividas() {
     this.dividaService.getAllDivida().subscribe( (_dividas: Divida[]) => {
       this.dividas = _dividas;
-      
       this.dividasFiltradas = this.dividas;
       console.log(_dividas);
     }, error => {

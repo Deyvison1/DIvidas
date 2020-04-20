@@ -18,6 +18,9 @@ namespace Dividas.Repositorio
          Task<Divida> GetAllDividasAsyncById(int id);
          
          Task<Divida[]> GetAllAsync();
-         
+
+         // Dividas Pagas
+         Task<Divida[]> GetAllDividasPagaAsync();
+         Task<Divida[]> GetAllDividasPendentesAsync();
     }
 }
