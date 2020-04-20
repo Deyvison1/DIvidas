@@ -123,7 +123,7 @@ export class DividasComponent implements OnInit {
       vencimento: ['', Validators.required],
       formaPagamento: ['', [Validators.required, Validators.max(2), Validators.min(1)]],
       valor: ['', [Validators.required, Validators.min(0.1)]],
-      situacao: ['', [Validators.required]]
+      situacao: ['']
     });
   }
 
@@ -136,6 +136,7 @@ export class DividasComponent implements OnInit {
       if (!this.divida.id) {
       /* Se não tiver Id e Post */
       this.divida = Object.assign({ }, this.registerForm.value);
+      this.divida.situacao = 0;
       this.dividaService.postDivida(this.divida).subscribe(
         (novaDivida: Divida) => {
           template.hide();
