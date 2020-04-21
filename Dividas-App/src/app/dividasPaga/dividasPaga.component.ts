@@ -17,6 +17,9 @@ export class DividasPagaComponent implements OnInit {
   dividas: Divida[];
   _filtroLista: string;
   dividasFiltradas: Divida[] = [];
+  dataAtual: string;
+
+
   get filtroLista(): string {
     return this._filtroLista;
   }
@@ -69,7 +72,8 @@ export class DividasPagaComponent implements OnInit {
     this.mostrarImagem = !this.mostrarImagem;
   }
   getDividas() {
-    this.dividaService.getAllDividasPaga().subscribe( (_dividas: Divida[]) => {
+      this.dataAtual = new Date().getMilliseconds().toString();
+      this.dividaService.getAllDividasPaga().subscribe( (_dividas: Divida[]) => {
       this.dividas = _dividas;
       this.dividasFiltradas = this.dividas;
       console.log(_dividas);

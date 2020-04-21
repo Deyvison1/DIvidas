@@ -22,6 +22,7 @@ export class DividasPendentesComponent implements OnInit {
   dividaAserPaga: Divida;
   tituloDAserPaga: string;
   valorDAserPaga: number;
+  dataAtual: string;
 
   get filtroLista(): string {
     return this._filtroLista;
@@ -104,7 +105,8 @@ export class DividasPendentesComponent implements OnInit {
     this.mostrarImagem = !this.mostrarImagem;
   }
   getDividas() {
-    this.dividaService.getAllDividasPendentes().subscribe( (_dividas: Divida[]) => {
+      this.dataAtual = new Date().getMilliseconds().toString();
+      this.dividaService.getAllDividasPendentes().subscribe( (_dividas: Divida[]) => {
       this.dividas = _dividas;
       this.dividasFiltradas = this.dividas;
       console.log(_dividas);

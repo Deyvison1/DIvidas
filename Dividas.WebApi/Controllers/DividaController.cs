@@ -6,6 +6,8 @@ using Dividas.Dominio;
 using AutoMapper;
 using Dividas.WebApi.Dtos;
 using System.Collections.Generic;
+using System.IO;
+using System.Net.Http.Headers;
 
 namespace Dividas.WebApi.Controllers
 {
@@ -31,6 +33,31 @@ namespace Dividas.WebApi.Controllers
                 var results = _mapper.Map<DividaDto[]>(dividas);
                 
                 return Ok(results);
+            }
+            catch (System.Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro no getAll {ex.Message}");
+            }
+        }
+        [HttpPost("upload")]
+        public IActionResult upload()
+        {
+            try
+            {
+                var file = Request.Form.Files[0];
+                var folderName = Path.Combine("Resources","Images");
+                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+
+                if(file.Length > 0) {
+                    var filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName;
+                    var fullPath = Path.Combine(pathToSave, filename.Replace("\"", " ").Trim());
+
+                    using(var stream = new FileStream(fullPath, FileMode.Create)) {
+                        file.CopyTo(stream);
+                    }
+                }
+                
+                return Ok();
             }
             catch (System.Exception ex)
             {

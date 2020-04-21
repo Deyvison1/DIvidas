@@ -36,7 +36,7 @@
     <tbody *ngIf="dividas && dividas.length">
       <tr *ngFor="let divida of dividasFiltradas">
         <td>
-          <img *ngIf="mostrarImagem" src="http://localhost:5000/img/{{divida.imagemURL}}"
+          <img *ngIf="mostrarImagem" src="http://localhost:5000/Resources/Images/{{divida.imagemURL}}?_ts={{dataAtual}}"
             [style.width.px]="imagemLargura" [style.margin.px]="imagemMargem"></td>
         <td>{{ divida.titulo | lowercase }}</td>
         <td>{{ divida.dataCompra | date: 'dd/MM/yyyy hh:mm' }}</td>
@@ -108,7 +108,21 @@
             </div>
             <div class="form-group col-md-6">
               <label>Imagem</label>
-              <input type="text" class="form-control" formControlName="imagemURL">
+              <table>
+                <tr>
+                  <td>
+                    <button class="btn btn-success" (click)="file.click()">
+                      Enviar Imagem &nbsp;
+                      <i class="far fa-image"></i>
+                    </button>
+                    <input type="file" #file [ngClass]="{'is-invalid': registerForm.get('imagemURL').errors && registerForm.get('imagemURL').touched}" 
+                    (change)="onFileChange($event)" class="form-control" formControlName="imagemURL" style="display: none;">
+                  </td>
+                </tr>
+              </table>
+              <div *ngIf="registerForm.get('imagemURL').hasError('required') && registerForm.get('imagemURL').touched" class="invalid-feedback">
+                Imagem é Obrigatória
+              </div>
             </div>
           </div>
           <div class="form-row">

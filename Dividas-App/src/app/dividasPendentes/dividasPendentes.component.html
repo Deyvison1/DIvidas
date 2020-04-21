@@ -31,7 +31,7 @@
     <tbody *ngIf="dividas && dividas.length">
       <tr *ngFor="let divida of dividasFiltradas">
         <td>
-          <img *ngIf="mostrarImagem" src="http://localhost:5000/img/{{divida.imagemURL}}"
+          <img *ngIf="mostrarImagem" src="http://localhost:5000/Resources/Images/{{divida.imagemURL}}?_ts={{dataAtual}}"
             [style.width.px]="imagemLargura" [style.margin.px]="imagemMargem"></td>
         <td>{{ divida.titulo | lowercase }}</td>
         <td>{{ divida.dataCompra | date: 'dd/MM/yyyy hh:mm' }}</td>

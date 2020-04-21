@@ -27,7 +27,9 @@ export class DividasComponent implements OnInit {
   _filtroLista =  '';
   registerForm: FormGroup;
   bodyDeletarDivida = '';
-
+  file: File;
+  fileNameUpdate: string;
+  dataAtual: string;
 
   get filtroLista(): string {
     return this._filtroLista;
@@ -72,6 +74,9 @@ export class DividasComponent implements OnInit {
   editarDivida(_divida: Divida, template: any) {
     this.divida = _divida;
     this.abrirModal(template);
+    this.divida = Object.assign({}, _divida);
+    this.fileNameUpdate = _divida.imagemURL.toString();
+    this.divida.imagemURL = '';
     this.registerForm.patchValue(this.divida);
   }
 
@@ -118,7 +123,7 @@ export class DividasComponent implements OnInit {
   validacao() {
     this.registerForm = this.fb.group({
       titulo: ['' , [Validators.required, Validators.minLength(3), Validators.maxLength(150)]],
-      imagemURL: [],
+      imagemURL: ['', Validators.required],
       dataCompra: ['' , Validators.required],
       vencimento: ['', Validators.required],
       formaPagamento: ['', [Validators.required, Validators.max(2), Validators.min(1)]],
@@ -130,12 +135,35 @@ export class DividasComponent implements OnInit {
   mudarImagem() {
     this.mostrarImagem = !this.mostrarImagem;
   }
+  uploadImagem() {
+    if(!this.divida.id) {
+      const nomeArquivo = this.divida.imagemURL.split('\\', 3);
+      this.divida.imagemURL = nomeArquivo[2];
+      this.dividaService.postUpload(this.file, nomeArquivo[2]).subscribe(
+        () => {
+          this.dataAtual = new Date().getMilliseconds().toString();
+          this.getDividas();
+        }
+      );
+    } else {
+      this.divida.imagemURL = this.fileNameUpdate;
+      this.dividaService.postUpload(this.file, this.fileNameUpdate).subscribe(
+        () => {
+          this.dataAtual = new Date().getMilliseconds().toString();
+          this.getDividas();
+        }
+      );
+    }
+  }
 
   salvarAlteracao(template: any) {
     if (this.registerForm.valid) {
       if (!this.divida.id) {
       /* Se não tiver Id e Post */
       this.divida = Object.assign({ }, this.registerForm.value);
+      
+      this.uploadImagem();
+
       this.divida.situacao = 0;
       this.dividaService.postDivida(this.divida).subscribe(
         (novaDivida: Divida) => {
@@ -149,6 +177,9 @@ export class DividasComponent implements OnInit {
       } else {
         /* Se tiver Id e Put */
         this.divida = Object.assign({ id: this.divida.id }, this.registerForm.value);
+
+        this.uploadImagem();
+
         this.dividaService.putDivida(this.divida).subscribe(
           () => {
             template.hide();
@@ -159,6 +190,16 @@ export class DividasComponent implements OnInit {
           }
         );
       }
+    }
+  }
+  
+
+  onFileChange(event) {
+    const reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      this.file = event.target.files;
+      console.log(this.file);
     }
   }
 

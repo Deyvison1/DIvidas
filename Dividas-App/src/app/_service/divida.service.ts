@@ -35,6 +35,15 @@ export class DividaService {
     return this.http.get<Divida[]>(`${this.baseURL}/dividasPendentes`);
   }
 
+  postUpload(file: File, name: string) {
+    const fileToUpload = <File>file[0];
+    const formData = new FormData();
+
+    formData.append('file', fileToUpload, name);
+
+    return this.http.post(`${this.baseURL}/upload`, formData);
+  }
+
   getDividasByTitulo(titulo: string): Observable<Divida[]> {
     return this.http.get<Divida[]>(`${this.baseURL}/getAllTitulo/${titulo}`);
   }
