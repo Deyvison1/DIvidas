@@ -4634,6 +4634,9 @@
       "Dividas.Dominio/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.2.0"
+        },
         "compile": {
           "bin/placeholder/Dividas.Dominio.dll": {}
         },
@@ -4646,6 +4649,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Dividas.Dominio": "1.0.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.2.0",
           "Microsoft.EntityFrameworkCore": "2.2.0",
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.0",
           "Pomelo.EntityFrameworkCore.MySql": "2.1.1"
