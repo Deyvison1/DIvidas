@@ -20,6 +20,9 @@ import { ContatosComponent } from './contatos/contatos.component';
 import { DividasPagaComponent } from './dividasPaga/dividasPaga.component';
 import { DividasPendentesComponent } from './dividasPendentes/dividasPendentes.component';
 import { TituloComponent } from './_shared/titulo/titulo.component';
+import { UserComponent } from './user/user.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegistrarComponent } from './user/registrar/registrar.component';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import { TituloComponent } from './_shared/titulo/titulo.component';
       ContatosComponent,
       DividasPagaComponent,
       DividasPendentesComponent,
-      TituloComponent
+      TituloComponent,
+      UserComponent,
+      LoginComponent,
+      RegistrarComponent
    ],
    imports: [
       BrowserModule,
