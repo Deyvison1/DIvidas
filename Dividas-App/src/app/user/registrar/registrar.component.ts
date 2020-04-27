@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { User } from 'src/app/_model/User';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/_service/auth.service';
 
 @Component({
   selector: 'app-registrar',
@@ -10,9 +13,12 @@ import { ToastrService } from 'ngx-toastr';
 export class RegistrarComponent implements OnInit {
 
   registerForm: FormGroup;
+  user: User;
 
   constructor(public fb: FormBuilder,
-      private toastr: ToastrService
+      private toastr: ToastrService,
+      public router: Router,
+      private authService: AuthService
     ) { }
 
   ngOnInit() {
@@ -44,7 +50,29 @@ export class RegistrarComponent implements OnInit {
   }
 
   cadastrarUsuario() {
-    console.log('Cadastrado');
+    if (this.registerForm.valid) {
+      this.user = Object.assign({password: this.registerForm.get('passwords.password').value},
+        this.registerForm.value
+      );
+      this.authService.registrar(this.user).subscribe(
+        () => {
+          this.router.navigate(['/user/login']);
+          this.toastr.success('Cadastro Realizado com Sucesso!');
+        }, error => {
+          const erro = error.error;
+          erro.array.forEach(element => {
+            switch (element.code) {
+              case 'DuplicateUserName':
+                this.toastr.error('Nome duplicado');
+                break;
+              default:
+                this.toastr.error(`Falha no cadastro ${element.code}`);
+                break;
+            }
+          });
+        }
+      );
+    }
   }
 
 }

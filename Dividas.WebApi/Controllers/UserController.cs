@@ -96,15 +96,18 @@ namespace Dividas.WebApi.Controllers
             var claims = new List<Claim> 
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.NomeCompleto)
+                new Claim(ClaimTypes.Name, user.NomeCompleto),
+                new Claim(ClaimTypes.Role, user.Role)
             };
 
+            /*
             var roles = await _userManager.GetRolesAsync(user);
-
+            
             foreach (var role in roles)
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));   
             }
+            */
             
             var key = new SymmetricSecurityKey(
                     Encoding.ASCII.GetBytes(_config

@@ -12554,7 +12554,7 @@
   },
   "packageFolders": {
     "/home/deyvison/.nuget/packages/": {},
-    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "/home/deyvison/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -12566,7 +12566,7 @@
       "outputPath": "/home/deyvison/Documentos/Dividas/Dividas.WebApi/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        "/home/deyvison/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "/home/deyvison/.nuget/NuGet/NuGet.Config"

@@ -13,7 +13,6 @@ export class NavComponent implements OnInit {
   }
 
   logado() {
-    return true;
   }
 
 }
