@@ -46,7 +46,7 @@ import { RegistrarComponent } from './user/registrar/registrar.component';
       TooltipModule.forRoot(),
       BrowserAnimationsModule,
       ToastrModule.forRoot({
-         timeOut: 10000,
+         timeOut: 1500,
          preventDuplicates: true,
       }),
       HttpClientModule,
